@@ -21,4 +21,15 @@ export class ClienteService {
       })
     );
   }
+
+  public create(cliente: Cliente) {
+    return this.http.post<Cliente>(`${API_CONFIG.baseUrl}/clientes`, cliente).pipe(
+      catchError(error => {
+        alert("Erro ao criar novo cliente");
+        console.error(error);
+        return EMPTY;
+      })
+    );
+  
+  }
 }
